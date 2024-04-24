@@ -76,6 +76,7 @@
         }
 
         elseif($usermode == 'staff'){
+            $lid = "SELECT staff_id FROM staff WHERE Email = ?";
             $query1 = "SELECT Email, Password FROM staff WHERE Email = ?";
             $stmt = $conn->prepare($query1);
             $stmt->bind_param("s", $lem);
@@ -95,6 +96,8 @@
                 $stmt->close();
 
                 session_start();
+                
+                $_SESSION['id']=$lid;
                 $_SESSION['email']=$lem;
                 $_SESSION['name']=$dbname;
                 header ('location:./staff/staff.php');
