@@ -1,0 +1,16 @@
+{
+    "name": "your-vendor-name/grievance-portal",
+    "description": "Complaint management platform for handling grievances.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Your Name",
+            "email": "your.email@example.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "ext-mysqli": "*"
+    }
+}
