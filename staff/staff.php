@@ -2,7 +2,9 @@
     session_start();
     require_once '../config.php';
 
-    $em = $_SESSION['name'];
+    $em = $_SESSION['id'];
+
+    
 
     $result = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' ");
     $num = mysqli_num_rows($result);
@@ -12,7 +14,6 @@
     
     $result2 = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' AND status='Pending' ");
     $num2 = mysqli_num_rows($result2);
-
 ?>
 
 <!DOCTYPE html>

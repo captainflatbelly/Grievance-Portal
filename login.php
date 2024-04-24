@@ -76,6 +76,19 @@
         }
 
         elseif($usermode == 'staff'){
+            //$lid = "SELECT staff_id FROM staff WHERE Email = ?";
+            $query3 = "SELECT staff_id FROM staff WHERE Email = ?";
+            $stmt = $conn->prepare($query3);
+            //$email = "example@example.com";
+            $stmt->bind_param("s", $lem);
+            $stmt->execute();
+            $stmt->bind_result($staffId);
+            if ($stmt->fetch()) {
+                $resultStaffId = $staffId;
+            } else {
+                $resultStaffId = null;
+            }
+            $stmt->close();
             $query1 = "SELECT Email, Password FROM staff WHERE Email = ?";
             $stmt = $conn->prepare($query1);
             $stmt->bind_param("s", $lem);
@@ -95,6 +108,8 @@
                 $stmt->close();
 
                 session_start();
+                
+                $_SESSION['id']=$staffId;
                 $_SESSION['email']=$lem;
                 $_SESSION['name']=$dbname;
                 header ('location:./staff/staff.php');
