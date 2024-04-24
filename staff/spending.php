@@ -34,7 +34,7 @@
                     require_once '../config.php';
                     session_start();
 
-                    $em = $_SESSION['name'];
+                    $em = $_SESSION['id'];
 
                     $sql = "SELECT * FROM complaints where staff= '$em' AND status='Pending' ";
                     $result = mysqli_query($conn,$sql);

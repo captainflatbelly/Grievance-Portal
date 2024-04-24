@@ -33,7 +33,7 @@
                     require_once '../config.php';
                     session_start();
 
-                    $em = $_SESSION['name'];
+                    $em = $_SESSION['id'];
 
                     $sql = "SELECT * FROM complaints where staff= '$em' AND status='Resolved' ";
                     $result = mysqli_query($conn,$sql);
@@ -60,8 +60,7 @@
                                 }
                                 if($row['status']!="Resolved"){
                             ?>
-                                <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id'];?>"><button class='ress' >Resolve</button></a></td> 
-
+                               
 
                             </tr>
                     <?php
