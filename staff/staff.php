@@ -4,6 +4,8 @@
 
     $em = $_SESSION['id'];
 
+    
+
     $result = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' ");
     $num = mysqli_num_rows($result);
 
