@@ -89,11 +89,7 @@
                         <td class="tab"><?php echo $row['Reg_time'] ?></td>
                         <td class="tab"><?php echo $row['staff'] ?></td>
                         <td class="tab"><?php echo $row['status'] ?></td>
-                        <?php if ($row['status'] == "Resolved") { ?>
-                            <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>Resolved</button></a></td>
-                        <?php } else { ?>
-                            <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id']; ?>"><button class='ress'>Resolve</button></a></td> 
-                        <?php } ?>
+                        
                     </tr>
                     <?php } ?>
                 </tbody>
