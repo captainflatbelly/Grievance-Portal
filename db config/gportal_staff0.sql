@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `staff` (
-  `staff_id` int NOT NULL AUTO_INCREMENT,
+  `staff_id` varchar(10) NOT NULL,
   `staffname` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
   `Password` varchar(255) NOT NULL,
   `joining_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`staff_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `staff` (
 
 LOCK TABLES `staff` WRITE;
 /*!40000 ALTER TABLE `staff` DISABLE KEYS */;
-INSERT INTO `staff` VALUES (1,'harsh','harsh@gmail.com','2323','2024-04-24 11:05:44'),(2,'Transport','transport@dept','12345','2024-04-24 20:07:04'),(3,'PWD','pwd@dept','12345','2024-04-25 08:23:22');
+INSERT INTO `staff` VALUES ('1','harsh','harsh@gmail.com','2323','2024-04-24 11:05:44'),('2','Transport','transport@dept','12345','2024-04-24 20:07:04'),('3','PWD','pwd@dept','12345','2024-04-25 08:23:22'),('e2f1e39fbc','omsbudsman','oms@budman','1234','2024-04-25 10:39:39');
 /*!40000 ALTER TABLE `staff` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-25 14:08:11
+-- Dump completed on 2024-04-25 18:02:08
