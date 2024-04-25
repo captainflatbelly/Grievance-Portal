@@ -33,13 +33,7 @@
     <div class="container">
         <div class="nav">
             <p>Resolvio</p>
-            <!-- <div class="complaint-count">
-                <p>All Complaints: <?php echo $num; ?></p>
-                <p>Resolved Complaints: <?php echo $num1; ?></p>
-                <p>Pending Complaints: <?php echo $num2; ?></p>
-                <p>High Priority Complaints: <?php echo $num3; ?></p>
-                <p>Unassigned Complaints: <?php echo $num4; ?></p>
-            </div> -->
+            
             <a href="../destroy.php">
                 <button class="logb">Logout</button>
             </a>
@@ -73,7 +67,7 @@
                     <?php
                         require_once '../config.php';
                         $em = $_SESSION['name'];
-                        $sql = "SELECT * FROM complaints";
+                        $sql = "SELECT * FROM complaints order by reg_time desc";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
 

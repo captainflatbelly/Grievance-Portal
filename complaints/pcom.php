@@ -40,7 +40,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id = '$id'";
+                    $sql = "SELECT * FROM complaints where u_id = '$id' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
