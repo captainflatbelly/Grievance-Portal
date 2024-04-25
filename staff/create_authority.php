@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resolvio</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="cstyle.css" />
     <style>
      
     </style>
@@ -17,7 +17,7 @@
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="sign-up-form">
                 <h2 class="title">Registering Municipal Authority</h2>
                 <div class="input-field">
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-signature"></i>
                     <input type="text" placeholder="Authority Name" name="authority_name" id="authority_name" required/>
                 </div>
                 <div class="input-field">
