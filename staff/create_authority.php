@@ -64,9 +64,10 @@
             // Error in inserting data
             echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
         }
-
+        
         // Close the database connection
         mysqli_close($conn);
+        header("Location:admin.php");
     }
     ?>
 

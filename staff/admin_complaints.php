@@ -39,20 +39,11 @@
             </a>
         </div>
         <div class="content">
-            <div class="con-updates">
-                <p>Complaint Id <i class="fas fa-angle-down"></i></p>
-                <p>Category <i class="fas fa-angle-down"></i></p>
-                <p>Location <i class="fas fa-angle-down"></i></p>
-                <p>Priority <i class="fas fa-angle-down"></i></p>
-                <p>Year <i class="fas fa-angle-down"></i></p>
-                <p>Date <i class="fas fa-angle-down"></i></p>
-                <p>Staff <i class="fas fa-angle-down"></i></p>
-                <p>Status <i class="fas fa-angle-down"></i></p>
-            </div>
+            
             <table class="com-table">
                 <thead>
                     <tr>
-                        <th>Complaint ID</th>
+                        <th>Action</th>
                         <th>Mobile No.</th>
                         <th>Category</th>
                         <th>Location</th>
@@ -67,14 +58,15 @@
                     <?php
                         require_once '../config.php';
                         $em = $_SESSION['name'];
-                        $sql = "SELECT * FROM complaints order by reg_time desc";
+                        $sql = "SELECT * FROM complaints where type!='suggestion' order by reg_time desc";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
-
+                        
                         while ($row = mysqli_fetch_array($result)) {
+                            $flag = ($row['staff'] == 'TBD')?'Assign Department':'Reassign Department';
                     ?>
                     <tr>
-                        <td class="tab"><a href="assign.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
+                        <td class="tab"><a href="assign.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $flag; ?></button></a></td>
                         <td class="tab"><?php echo $row['Mob'] ?></td>
                         <td class="tab"><?php echo $row['Category'] ?></td>
                         <td class="tab"><?php echo $row['Location'] ?></td>

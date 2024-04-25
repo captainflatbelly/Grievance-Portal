@@ -11,7 +11,7 @@
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
     $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, title, Description, Reg_time, type) VALUES ('$c_id','$id', '$title','$desc',current_timestamp(), 'suggestion') ");
     echo "<script>alert('ID not found')</script>";
-    header("Location:pcom.php");
+    header("Location:viewSuggestions.php");
   }
   else
   {
@@ -33,7 +33,7 @@
   <div class="container">
     
       <div class="nav">
-      <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+      <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
           <a href="../destroy.php" ><button class="logb" >Logout</button></a>
       </div>
 

@@ -32,7 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Update the row in complaints table
     $query = "UPDATE complaints 
-              SET u_id = ?, Mob = ?, Category = ?, Location = ?, Priority = ?, Description = ?, Reg_time = current_timestamp()
+              SET u_id = ?, Mob = ?, Category = ?, Location = ?, Priority = ?, Description = ?, Reg_time = current_timestamp(), status = 'Pending', type = 'complaint'
               WHERE C_Id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("sssssss", $id, $mob, $category, $loc, $priority, $desc, $id_get);

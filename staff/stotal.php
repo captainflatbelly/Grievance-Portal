@@ -38,8 +38,8 @@
                     while($row = mysqli_fetch_array($result)){
                 ?>
                     <tr>
-                        <td scope="row" class="id"><?php echo $row['C_Id'] ?></td>
-                        <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                    <td class="tab"><a href="../complaints/viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
+                         <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
