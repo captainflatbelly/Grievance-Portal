@@ -3,7 +3,7 @@
   require_once '../config.php';
   $id="1234";
   $id = $_SESSION['id'];
-
+  echo $id;
   if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
     $mob = $_POST['mobile'];
     $category = $_POST['category'];

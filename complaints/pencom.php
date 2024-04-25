@@ -37,7 +37,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending'";
+                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 

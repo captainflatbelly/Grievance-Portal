@@ -24,11 +24,14 @@
             
             <div class="uactions">
                 <div class="item">
+                <a href="./complaints/viewSuggestions.php"><button class="actionb">View Suggestions</button></a>
+                    <a href="./complaints/addSuggestion.php"><button class="actionb">Add Suggestion</button></a>
+             
                     <a href="./complaints/cform.php"><button class="actionb">Initialize Complaint</button></a>
                     <a href="./complaints/pcom.php"><button class="actionb">Previous Complaints</button></a>
                     <a href="./complaints/rcom.php"><button class="actionb">Resolved Complaints</button></a>
                     <a href="./complaints/pencom.php"><button class="actionb">Pending Complaints</button></a>
-                </div>
+                       </div>
                 <img src="./img/complain.jpg" alt="">
             </div>
         </div>
