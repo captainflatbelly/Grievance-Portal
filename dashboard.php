@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p>VoxFlow</p>
+            <p>Resolvio</p>
             <a href="destroy.php" >
                 <button class="logb" >
                     Logout

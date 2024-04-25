@@ -9,7 +9,7 @@
 <body>
 <div class="container">
         <div class="nav">
-            <p><a href="staff.php" class="hlink">VoxFlow</a></p>
+            <p><a href="staff.php" class="hlink">Resolvio</a></p>
             <p1>Resolved Complaints</p1>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>

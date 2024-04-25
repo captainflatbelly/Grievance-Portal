@@ -18,7 +18,7 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
             <p1>Complaints</p1>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
@@ -40,7 +40,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id = '$id' and type !='suggestion' order by reg_time desc";
+                    $sql = "SELECT * FROM complaints where u_id = '$id' and type != 'suggestion' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
