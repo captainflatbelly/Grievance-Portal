@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "<script>alert('ID not found in form data');</script>";
     }
+    header("Location: ../complaints/viewFeedback.php");
     mysqli_close($conn);
 }
 ?>

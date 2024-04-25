@@ -35,16 +35,10 @@
             header('location:./alreadyexists.php');
             exit;
         }
-        // $result1 = mysqli_query($conn,"select * from users where email = '$sem'");
-        // $result2 = mysqli_query($conn,"select * from staff where Email = '$sem'");
-        // echo "Selected user type: " . $usermode;
-        // if(mysqli_num_rows($result1)==0 && mysqli_num_rows($result2)==0){
-        //     header ('location:./alreadyexists');
-        //     return;
-        // }   
+        
         $sid = substr(md5(uniqid(mt_rand(), true)), 0, 10);
         if($usermode == 'user') {
-            $query = "INSERT INTO users (username, email, upassword, joining_date) VALUES (?, ?, ?, current_timestamp())";
+            $query = "INSERT INTO users (u_id, username, email, upassword, joining_date) VALUES (?, ?, ?, ?, current_timestamp())";
         } else {
             $query = "INSERT INTO staff (staff_id, staffname, Email, Password, joining_date) VALUES (?, ?, ?, ?, current_timestamp())";
         }
@@ -74,19 +68,31 @@
         $stmt->bind_result($dbemail, $dbpassword);
         $stmt->fetch();
         $stmt->close();
-
+        $query3 = "SELECT u_id FROM users WHERE email = ?";
+            $stmt = $conn->prepare($query3);
+            //$email = "example@example.com";
+            $stmt->bind_param("s", $lem);
+            $stmt->execute();
+            $stmt->bind_result($userId);
+            if ($stmt->fetch()) {
+                $_SESSION['id'] = $userId;
+            } else {
+                $resultUserId = null;
+            }
+            $stmt->close();
         if($dbemail == $lem && $dbpassword == $lpass ){
             session_start();
+            $_SESSION['id']=$userId;
             $_SESSION['email']=$lem;
 
             header ('location:dashboard.php');
         }
 
         elseif($usermode == 'staff'){
-            //$lid = "SELECT staff_id FROM staff WHERE Email = ?";
+
             $query3 = "SELECT staff_id FROM staff WHERE Email = ?";
             $stmt = $conn->prepare($query3);
-            //$email = "example@example.com";
+
             $stmt->bind_param("s", $lem);
             $stmt->execute();
             $stmt->bind_result($staffId);

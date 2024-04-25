@@ -2,6 +2,7 @@
     session_start();
     require_once '../config.php';
     $trimmedMail =  $_SESSION['email'];
+    $id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +37,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where email= '$trimmedMail' AND status='Pending'";
+                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending'";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 

@@ -1,10 +1,10 @@
 <?php 
   session_start();
   require_once '../config.php';
+  $id="1234";
+  $id = $_SESSION['id'];
 
-  $em = $_SESSION['email'];
-
-  if(isset($_SESSION['email']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
+  if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
     $mob = $_POST['mobile'];
     $category = $_POST['category'];
     $loc = $_POST['location'];
@@ -12,10 +12,15 @@
     $desc = $_POST['description'];
     $em = $_SESSION['email'];
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
-    $query = mysqli_query($conn,"INSERT into complaints (C_Id,email, Mob, Category, Location, Priority, Description, Reg_time) VALUES ('$c_id','$em','$mob','$category','$loc','$priority','$desc',current_timestamp()) ");
+    $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, Mob, Category, Location, Priority, Description, Reg_time) VALUES ('$c_id','$id','$mob','$category','$loc','$priority','$desc',current_timestamp()) ");
 
     header("Location:pcom.php");
   }
+  else
+  {
+    echo "<script>alert('ID not found') $id;</script>";
+  }
+  
 
 ?>
 

@@ -4,6 +4,7 @@
 
    // $trimmedMail = str_replace(".com", "", $_SESSION['email']);
     $trimmedMail = $_SESSION['email'];
+    $id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +40,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where email = '$trimmedMail'";
+                    $sql = "SELECT * FROM complaints where u_id = '$id'";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
@@ -47,8 +48,8 @@
                 ?>
                         <tr>
                             
-                            <td scope="row" class="id"><?php echo $row['C_Id'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                        <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
+                        <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
