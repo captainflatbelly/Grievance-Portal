@@ -15,12 +15,21 @@
 </head>
 <body>
     <div class="container">
+<<<<<<< HEAD
         <div class="nav">
             <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
             <p1>Suggestions</p1>
             <a href="viewMySuggestions.php"><button>My Suggestions</button></a>
+=======
+        <div class="nav" >
+            <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+            <p1>Suggestions</p1>
+            
+>>>>>>> refs/remotes/origin/main
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
+        <div style="width: 100%; margin-top: 10px; margin-bottom: 10px; display: flex; justify-content: flex-end; align-items: center">
+        <a href="viewMySuggestions.php"><button class="sugg">My Suggestions</button></a></div>
         <table class="com-table">
             <thead>
                 <tr>
