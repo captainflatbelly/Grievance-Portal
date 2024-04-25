@@ -44,8 +44,8 @@
                 ?>
                         <tr>
                             
-                            <td scope="row" class="id"><?php echo $row['C_Id'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                        <td class="tab"><a href="feedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
+                          <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>

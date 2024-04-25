@@ -42,13 +42,14 @@
         //     header ('location:./alreadyexists');
         //     return;
         // }   
+        $sid = substr(md5(uniqid(mt_rand(), true)), 0, 10);
         if($usermode == 'user') {
             $query = "INSERT INTO users (username, email, upassword, joining_date) VALUES (?, ?, ?, current_timestamp())";
         } else {
-            $query = "INSERT INTO staff (staffname, Email, Password, joining_date) VALUES (?, ?, ?, current_timestamp())";
+            $query = "INSERT INTO staff (staff_id, staffname, Email, Password, joining_date) VALUES (?, ?, ?, ?, current_timestamp())";
         }
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sss", $sname, $sem, $spass);
+        $stmt->bind_param("ssss", $sid, $sname, $sem, $spass);
         $stmt->execute();
         $stmt->close();
         header ('location:./');
@@ -61,7 +62,8 @@
         $usermode = isset($_POST['Luser_type']) ? $_POST['Luser_type'] : 'nai aaya'; // Check if Suser_type is set
         if($lem == 'admin@db' && $lpass == '1234') {
             $_SESSION['email']=$lem;
-                $_SESSION['name']='Admin';
+            $_SESSION['id']='adminID';
+            $_SESSION['name']='Admin';
             header('location:/staff/admin.php');
             return;
         }
