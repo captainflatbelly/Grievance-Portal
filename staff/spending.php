@@ -10,7 +10,7 @@
 <div class="container">
         <div class="nav">
             <p><a href="staff.php" class="hlink">VoxFlow</a></p>
-            <p1>Previous Complaints</p1>
+            <p1>Pendings Complaints</p1>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
         <table class="com-table">
@@ -25,7 +25,7 @@
                     <th>Time of Registration</th>
                     <th >Staff</th>
                     <th colspan="2">Status</th> 
-                    <th>Status</th>
+                    
 		        </tr>
 	        </thead>
 	        <tbody>
@@ -53,7 +53,9 @@
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['staff'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['status'] ?></td>
-                            <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id'];?>"><button class='ress' >Resolve</button></a></td> 
+                            <?php if ($row['status'] != "resolved") { ?>
+            <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id']; ?>"><button class='ress'>Resolve</button></a></td>
+        <?php } ?>
                         </tr>
                 <?php	
                     }

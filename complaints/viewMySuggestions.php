@@ -29,12 +29,13 @@
                     <th>Description</th>
                     <th>Posted by</th>
                     <th >Upvotes</th>
+                    <th >Action</th>
 		        </tr>
 	        </thead>
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where type='suggestion' and C_Id = '$id' order by reg_time desc";
+                    $sql = "SELECT * FROM complaints where type='suggestion' and u_id = '$id' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 

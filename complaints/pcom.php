@@ -19,7 +19,7 @@
     <div class="container">
         <div class="nav">
             <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
-            <p1>Previous Complaints</p1>
+            <p1>Complaints</p1>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
         <table class="com-table">
@@ -40,7 +40,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id = '$id' order by reg_time desc";
+                    $sql = "SELECT * FROM complaints where u_id = '$id' and type !='suggestion' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
@@ -48,7 +48,7 @@
                 ?>
                         <tr>
                             
-                        <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
+                        <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
                         <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>

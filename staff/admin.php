@@ -20,16 +20,14 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p>VoxFlow</p>
+            <p>Resolvio</p>
             <a href="../destroy.php" >
                 <button class="logb" >
                     Logout
                 </button>
             </a>
         </div>
-        <div class="wtext">
-            <p>Welcome, <?php echo $_SESSION['name']; ?></p>
-        </div>
+        
         
         <div class="dash-main">
             <div class="dash-img">

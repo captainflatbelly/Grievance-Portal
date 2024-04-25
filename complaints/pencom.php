@@ -23,7 +23,7 @@
         <table class="com-table">
 	        <thead>
 		        <tr>
-                    <th>Complaint ID</th>
+                    <th>Actions</th>
                     <th>Mobile No.</th>
                     <th>Category</th>
                     <th>Location</th>
@@ -37,7 +37,7 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending' order by reg_time desc";
+                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending' AND type='complaint' order by reg_time desc";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
@@ -45,8 +45,8 @@
                 ?>
                         <tr>
                             
-                            <td scope="row" class="id"><?php echo $row['C_Id'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                        <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
+                        <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>

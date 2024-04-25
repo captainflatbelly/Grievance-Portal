@@ -6,15 +6,17 @@
   echo $id;
   if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
     $mob = $_POST['mobile'];
+    $title = $_POST['title'];
     $category = $_POST['category'];
     $loc = $_POST['location'];
     $priority = $_POST['priority'];
     $desc = $_POST['description'];
     $em = $_SESSION['email'];
+    $type = 'complaint';
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
-    $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, Mob, Category, Location, Priority, Description, Reg_time) VALUES ('$c_id','$id','$mob','$category','$loc','$priority','$desc',current_timestamp()) ");
+    $query = mysqli_query($conn,"INSERT into complaints (title, C_Id,u_id, Mob, Category, Location, Priority, Description, type,Reg_time) VALUES ('$title','$c_id','$id','$mob','$category','$loc','$priority','$desc','$type',current_timestamp()) ");
 
-    header("Location:pcom.php");
+    header("Location:pencom.php");
   }
   else
   {
@@ -41,13 +43,16 @@
       </div>
 
       <form action="cform.php" method="post" enctype="multipart/form-data">
-
         <div>
-          <label for="mobile">Mobile Number: (*optional)</label>
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" required>
+      </div>
+        <div>
+          <label for="mobile">Mobile Number</label>
           <input type="tel" id="mobile" name="mobile" >
         </div>
         <div>
-          <label for="category">Category:</label>
+          <label for="category">Category</label>
           <select id="category" name="category" required>
             <option value="">Select Category</option>
             <option value="Academic-Issues">Academic Issues</option>
@@ -62,11 +67,11 @@
           </select>
         </div>
         <div>
-          <label for="location">Location: (*optional)</label>
+          <label for="location">Location</label>
           <input type="text" id="location" name="location" >
         </div>
         <div>
-          <label for="priority">Priority Level:</label>
+          <label for="priority">Priority Level</label>
           <select id="priority" name="priority" required>
             <option value="">Select Priority</option>
             <option value="High">High</option>
@@ -75,7 +80,7 @@
           </select>
         </div>
         <div>
-          <label for="description">Description:</label>
+          <label for="description">Description</label>
           <textarea id="description" name="description" rows="4" required></textarea>
         </div>
         <div>

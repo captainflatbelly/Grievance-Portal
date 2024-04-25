@@ -43,8 +43,8 @@
                 ?>
                         <tr>
                        
-                        <td class="tab"><a href="feedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
-                         <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                        <td class="tab"><a href="../complaints/viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
+                     <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
@@ -52,20 +52,11 @@
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['staff'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['status'] ?></td>
-                            <?php 
-                                if($row['status']=="Resolved"){
-                            ?>
-                                    <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id'];?>"><button class='alress' >Resolved</button></a></td> 
-                            <?php
-                                }
-                                if($row['status']!="Resolved"){
-                            ?>
-                                <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id'];?>"><button class='ress' >Resolve</button></a></td> 
-
+                            
 
                             </tr>
                     <?php
-                                }	
+                                	
                         }
                     ?>
             </tbody>

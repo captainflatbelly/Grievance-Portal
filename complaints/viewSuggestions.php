@@ -49,8 +49,7 @@
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['u_id'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['upvotes'] ?></td>
-                            <td scope="row" class="tab"><a href="suggestionToComplaint.php?id=<?php echo $row['C_Id']; ?>"><button>File Suggestion</button></td>
-                            
+                           
                         </tr>
                 <?php	
                     }
