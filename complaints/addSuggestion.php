@@ -11,6 +11,7 @@
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
     $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, title, Description, Reg_time, type) VALUES ('$c_id','$id', '$title','$desc',current_timestamp(), 'suggestion') ");
     //echo "<script>alert('ID found')</script>";
+    echo "<script>alert('Suggestion added successfully')</script>";
     header("Location: ./viewSuggestions.php");
   }
   else
