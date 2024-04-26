@@ -1,30 +1,17 @@
 <?php 
-session_start();
-require_once '../config.php';
-
-// Debug: Print session ID
-echo "Session ID: " . session_id() . "<br>";
-
-$id = "1234"; // Default value
-if(isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
-}
-
-echo "User ID: " . $id . "<br>";
-
-if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
-    echo "Inside POST request handling<br>";
+  session_start();
+  require_once '../config.php';
+  $id="1234";
+  $id = $_SESSION['id'];
+  echo $id;
+  if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
     $title = $_POST['title'];
     $desc = $_POST['description'];
-
-    // Debug: Print title and description
-    echo "Title: " . $title . "<br>";
-    echo "Description: " . $desc . "<br>";
-
+   
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
     $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, title, Description, Reg_time, type) VALUES ('$c_id','$id', '$title','$desc',current_timestamp(), 'suggestion') ");
-    echo "<script>alert('ID not found')</script>";
-    header("Location:viewSuggestions.php");
+    //echo "<script>alert('ID found')</script>";
+    header("Location: ./viewSuggestions.php");
   }
   else
   {
@@ -34,20 +21,6 @@ if(isset($_SESSION['id']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
 
 ?>
 
-    // Debug: Check if query executed successfully
-    if($query) {
-        echo "Complaint added successfully<br>";
-    } else {
-        echo "Error: " . mysqli_error($conn) . "<br>";
-    }
-
-    // Redirect user
-    header("Location:viewSuggestions.php");
-    exit;
-} else {
-    echo "ID not found<br>";
-}
-?>
 
 
 <!DOCTYPE html>
