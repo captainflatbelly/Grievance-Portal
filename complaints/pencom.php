@@ -37,7 +37,11 @@
 	        <tbody>
                 <?php
 
-                    $sql = "SELECT * FROM complaints where u_id= '$id' AND status='Pending' AND type='complaint' order by reg_time desc";
+                    $sql = "SELECT complaints.*, staff.staffname 
+                    FROM complaints 
+                    JOIN staff ON complaints.staff = staff.staff_id
+                    WHERE complaints.u_id = '$id' AND complaints.type != 'suggestion'
+                    ORDER BY complaints.reg_time DESC";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
@@ -52,7 +56,7 @@
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['staff'] ?></td>
+                            <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['status'] ?></td>
                         </tr>
                 <?php	

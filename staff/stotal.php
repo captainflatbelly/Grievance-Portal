@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Total complaints</title>
-    <link rel="stylesheet" href="../complaints/cstyle.css">
+    <link rel="stylesheet" href="staff.css">
 </head>
 <body>
 <div class="container">
@@ -32,8 +32,11 @@
                     require_once '../config.php';
                     session_start();
                     $em = $_SESSION['id'];
-                    $sql = "SELECT * FROM complaints where staff= '$em' ";
-                    $result = mysqli_query($conn,$sql);
+                    $sql = "SELECT complaints.*, staff.staffname 
+                            FROM complaints 
+                            JOIN staff ON complaints.staff = staff.staff_id 
+                            WHERE complaints.staff = '$em'";
+                    $result = mysqli_query($conn, $sql);
                     $num = mysqli_num_rows($result);
                     while($row = mysqli_fetch_array($result)){
                 ?>
@@ -45,7 +48,7 @@
                         <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                        <td scope="row" class="tab"><?php echo $row['staff'] ?></td>
+                        <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
                         <td scope="row" class="tab"><?php echo $row['status'] ?></td>
                         <?php 
                             // Check if status is not "Resolved"

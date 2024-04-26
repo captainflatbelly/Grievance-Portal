@@ -34,9 +34,7 @@
                 </button>
             </a>
         </div>
-        <div class="wtext">
-            <p>Welcome, <?php echo $_SESSION['name']; ?></p>
-        </div>
+        
         
         <div class="dash-main">
             <div class="dash-img">

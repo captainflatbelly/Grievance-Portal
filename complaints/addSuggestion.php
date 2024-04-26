@@ -10,9 +10,8 @@
    
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
     $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, title, Description, Reg_time, type) VALUES ('$c_id','$id', '$title','$desc',current_timestamp(), 'suggestion') ");
-    //echo "<script>alert('ID found')</script>";
-    echo "<script>alert('Suggestion added successfully')</script>";
-    header("Location: ./viewSuggestions.php");
+
+    header("Location:viewSuggestions.php");
   }
   else
   {
@@ -21,8 +20,6 @@
   
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,7 +37,7 @@
           <a href="../destroy.php" ><button class="logb" >Logout</button></a>
       </div>
 
-      <form action="<?php echo "returning to itself"; echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  method="post" enctype="multipart/form-data">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  method="post" enctype="multipart/form-data">
         <div>
           <label for="title">Suggestion</label>
           <input type="text" id="title" name="title" >

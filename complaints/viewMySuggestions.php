@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cstyle.css" />
+    <link rel="stylesheet" href="staff.css" />
     <title>Suggestions</title>
 </head>
 <body>
@@ -40,12 +40,15 @@
                     $num = mysqli_num_rows($result);
 
                     while($row = mysqli_fetch_array($result)){
+                        $postedby_query = mysqli_query($conn, "SELECT username FROM users WHERE u_id = '{$row['u_id']}'");
+                        $postedby = mysqli_fetch_assoc($postedby_query)['username'];
+                        
                 ?>
                         <tr>
                             
                             <td scope="row" class="id"><?php echo $row['title'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['u_id'] ?></td>
+                            <td scope="row" class="tab"><?php echo $postedby ?></td>
                             <td scope="row" class="tab"><?php echo $row['upvotes'] ?></td>
                             <td scope="row" class="tab"><a href="suggestionToComplaint.php?id=<?php echo $row['C_Id']; ?>"><button>File Suggestion</button></td>
                             

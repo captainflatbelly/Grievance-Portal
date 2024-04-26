@@ -18,9 +18,7 @@
             </a>
         </div>
         <div class="main">
-            <div class="wtext">
-                <p>Welcome, what can we do for you?</p>
-            </div>
+           
             
             <div class="uactions">
                 <div class="item">
