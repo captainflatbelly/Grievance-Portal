@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p>VoxFlow</p>
+            <p>Resolvio</p>
             <a href="destroy.php" >
                 <button class="logb" >
                     Logout
@@ -18,9 +18,7 @@
             </a>
         </div>
         <div class="main">
-            <div class="wtext">
-                <p>Welcome, what can we do for you?</p>
-            </div>
+           
             
             <div class="uactions">
                 <div class="item">

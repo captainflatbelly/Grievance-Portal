@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resolved complaints</title>
-    <link rel="stylesheet" href="../complaints/cstyle.css">
+    <link rel="stylesheet" href="staff.css">
 </head>
 <body>
 <div class="container">
         <div class="nav">
-            <p><a href="staff.php" class="hlink">VoxFlow</a></p>
+            <p><a href="staff.php" class="hlink">Resolvio</a></p>
             <p1>Resolved Complaints</p1>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
@@ -35,7 +35,10 @@
 
                     $em = $_SESSION['id'];
 
-                    $sql = "SELECT * FROM complaints where staff= '$em' AND status='Resolved' ";
+                    $sql = "SELECT complaints.*, staff.staffname 
+                            FROM complaints 
+                            JOIN staff ON complaints.staff = staff.staff_id 
+                            WHERE complaints.staff = '$em' AND complaints.status='Resolved'";
                     $result = mysqli_query($conn,$sql);
                     $num = mysqli_num_rows($result);
 
@@ -50,7 +53,7 @@
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['staff'] ?></td>
+                            <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['status'] ?></td>
                             
 

@@ -10,54 +10,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="cstyle.css" />
+    <link rel="stylesheet" href="staff.css" />
     <title>Suggestions</title>
 </head>
 <body>
     <div class="container">
-        <div class="nav" >
-            <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+        <div class="nav">
+            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
             <p1>Suggestions</p1>
-            
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
-            
-    </a>
         </div>
         <div style="width: 100%; margin-top: 10px; margin-bottom: 10px; display: flex; justify-content: flex-end; align-items: center">
         <a href="viewMySuggestions.php"><button class="sugg">My Suggestions</button></a></div>
         <table class="com-table">
-	        <thead>
-		        <tr>
+            <thead>
+                <tr>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Posted by</th>
-                    <th >Upvotes</th>
-		        </tr>
-	        </thead>
-	        <tbody>
+                    <th>Upvotes</th>
+                    <th>Action</th> <!-- New column for upvoting -->
+                </tr>
+            </thead>
+            <tbody>
                 <?php
+                    $sql = "SELECT * FROM complaints WHERE type='suggestion' ORDER BY reg_time DESC";
+                    $result = mysqli_query($conn, $sql);
+                    while($row = mysqli_fetch_array($result)) {
+                        // Check if the user has already upvoted this suggestion
+                        $postedby_query = mysqli_query($conn, "SELECT username FROM users WHERE u_id = '{$row['u_id']}'");
+                        $postedby = mysqli_fetch_assoc($postedby_query)['username'];
+                        $checkUpvoteQuery = "SELECT * FROM likes WHERE u_id = '$id' AND C_Id = '{$row['C_Id']}'";
+                        $checkUpvoteResult = mysqli_query($conn, $checkUpvoteQuery);
+                        $alreadyUpvoted = mysqli_num_rows($checkUpvoteResult) > 0;
 
-                    $sql = "SELECT * FROM complaints where type='suggestion' order by reg_time desc";
-                    $result = mysqli_query($conn,$sql);
-                    $num = mysqli_num_rows($result);
-
-                    while($row = mysqli_fetch_array($result)){
-                ?>
-                        <tr>
-                            
-                            <td scope="row" class="id"><?php echo $row['title'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['u_id'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['upvotes'] ?></td>
-                           
-                        </tr>
-                <?php	
+                        // Output the suggestion row
+                        echo "<tr>";
+                        echo "<td>{$row['title']}</td>";
+                        echo "<td>{$row['Description']}</td>";
+                        echo "<td>{$postedby}</td>";
+                        echo "<td>{$row['upvotes']}</td>";
+                        echo "<td>";
+                        if (!$alreadyUpvoted) {
+                            // Display upvote button if the user hasn't upvoted
+                            echo "<a href='upvote.php?id={$row['C_Id']}'><button>Upvote</button></a>";
+                        } else {
+                            echo "Already Upvoted";
+                        }
+                        echo "</td>";
+                        echo "</tr>";
                     }
-
-
                 ?>
             </tbody>
-	    </table>
+        </table>
     </div>
 </body>
 </html>

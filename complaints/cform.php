@@ -32,13 +32,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complaint form</title>
-    <link rel="stylesheet" href="cstyle.css" />
+    <link rel="stylesheet" href="cstyle.css">
 </head>
 <body>
   <div class="container">
     
       <div class="nav">
-      <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+      <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
           <a href="../destroy.php" ><button class="logb" >Logout</button></a>
       </div>
 

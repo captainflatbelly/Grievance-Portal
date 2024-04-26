@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="container">
     <div class="nav">
-      <p><a href="../dashboard.php" class="hlink">VoxFlow</a></p>
+      <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
       <a href="../destroy.php"><button class="logb">Logout</button></a>
     </div>
 

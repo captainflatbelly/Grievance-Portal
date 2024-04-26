@@ -11,12 +11,13 @@ require_once '../config.php';
     <title>Adminboard</title>
     <link rel="stylesheet" href="cstyle.css">
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="staff.css" />
 </head>
 <body>
     <div class="container">
         <div class="nav">
             <p>Resolvio</p>
+            <p1>Status History</p1>
             <a href="../destroy.php">
                 <button class="logb">Logout</button>
             </a>
@@ -29,7 +30,7 @@ require_once '../config.php';
                         <th>Serial Number </th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Status ID</th>
+                        
                         <th>Department</th>
                         <th>Time</th>
                     </tr>
@@ -45,12 +46,15 @@ require_once '../config.php';
                             exit;
                         }
                        
-                        $sql = "SELECT * FROM activity where C_Id = '$complaintId'";
+                        $sql = "SELECT activity.*, staff.staffname 
+                                FROM activity 
+                                JOIN staff ON activity.feedback_from = staff.staff_id
+                                WHERE activity.C_Id = '$complaintId'";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
 
                         // Fetch the title from the complaints table
-                        $sqlTitle = "SELECT title FROM complaints where C_Id = '$complaintId'";
+                        $sqlTitle = "SELECT title FROM complaints WHERE C_Id = '$complaintId'";
                         $resultTitle = mysqli_query($conn, $sqlTitle);
                         $rowTitle = mysqli_fetch_array($resultTitle);
                         $title = $rowTitle['title'];
@@ -58,11 +62,10 @@ require_once '../config.php';
                         while ($row = mysqli_fetch_array($result)) {
                     ?>
                     <tr>
-                    <td class="tab"><?php echo $row['activity_number'] ?></td>
-                        
+                        <td class="tab"><?php echo $row['activity_number'] ?></td>
                         <td class="tab"><?php echo $title ?></td>
                         <td class="tab"><?php echo $row['feedback'] ?></td>
-                        <td class="tab"><?php echo $row['feedback_from'] ?></td>
+                        <td class="tab"><?php echo $row['staffname'] ?></td>
                         <td class="tab"><?php echo $row['ftime'] ?></td>
                     </tr>
                     <?php } ?>

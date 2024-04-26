@@ -58,7 +58,11 @@
                     <?php
                         require_once '../config.php';
                         $em = $_SESSION['name'];
-                        $sql = "SELECT * FROM complaints where type!='suggestion' order by reg_time desc";
+                        $sql = "SELECT complaints.*, staff.staffname 
+                                FROM complaints 
+                                LEFT JOIN staff ON complaints.staff = staff.staff_id 
+                                WHERE type!='suggestion' 
+                                ORDER BY reg_time DESC";
                         $result = mysqli_query($conn, $sql);
                         $num = mysqli_num_rows($result);
                         
@@ -73,7 +77,7 @@
                         <td class="tab"><?php echo $row['Priority'] ?></td>
                         <td class="tab"><?php echo $row['Description'] ?></td>
                         <td class="tab"><?php echo $row['Reg_time'] ?></td>
-                        <td class="tab"><?php echo $row['staff'] ?></td>
+                        <td class="tab"><?php echo $row['staffname'] ?></td>
                         <td class="tab"><?php echo $row['status'] ?></td>
                         
                     </tr>
@@ -83,4 +87,4 @@
         </div>
     </div>
  </body>
-</html> 
+</html>

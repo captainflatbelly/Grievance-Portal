@@ -27,16 +27,14 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p>VoxFlow</p>
+            <p>Resolvio</p>
             <a href="../destroy.php" >
                 <button class="logb" >
                     Logout
                 </button>
             </a>
         </div>
-        <div class="wtext">
-            <p>Welcome, <?php echo $_SESSION['name']; ?></p>
-        </div>
+        
         
         <div class="dash-main">
             <div class="dash-img">
@@ -46,19 +44,9 @@
                 <p><a href="stotal.php">Total Complaints: <?php echo $num;?></a></p>
                 <p><a href="sreso.php">Resolved Complaints: <?php echo $num1;?></a></p>
                 <p><a href="spending.php">Pending Complaints: <?php echo $num2;?></a></p>
-                            </div>
+                </div>
         </div>
     </div>
-    <script>
-        function mastercode() {
-            var userInput = prompt("Enter the Master Code:");
-            if (userInput == "5261") {
-                window.location.href = "admin.php";
-            }
-            else {
-                alert("Dont try to overstep your boundaries🤡");
-            }
-        }
-    </script>
+    
 </body>
 </html>
