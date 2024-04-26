@@ -44,7 +44,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assign Staff</title>
-    <link rel="stylesheet" type="text/css" href="staff.css">
+    <link rel="stylesheet" type="text/css" href="cstyle.css">
 </head>
 <body>
     <h2>Assign Staff to Complaint</h2>
