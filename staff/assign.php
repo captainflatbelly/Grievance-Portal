@@ -3,7 +3,7 @@ require_once '../config.php';
 
 if(isset($_GET['id']) && !empty($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
-    echo $id;
+
     $sql = "SELECT * FROM complaints WHERE C_Id = '$id'";
     $result = mysqli_query($conn, $sql);
     

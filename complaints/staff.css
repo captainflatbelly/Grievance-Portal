@@ -1,3 +1,6 @@
+Based on the given CSS file, I will create a new CSS file keeping the classes same. Below is the structured new CSS file based on the given CSS:
+
+```css
 /* Merged CSS */
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
@@ -187,21 +190,4 @@ img {
 .ress {
   background-color: #4CAF50;
   color: #fff;
-  border: none;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.ress:hover {
-  background-color: #45a049;
-}
-
-.alress {
-  background-color:
-
-}
+  border:  
