@@ -172,3 +172,18 @@ p1{
   transition-duration: 0.4s;
   border-radius: 4px;
 }
+.sugg{
+  color: #fff;
+  background-color: #4CAF50;
+  border: 2px solid #4CAF50;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.sugg:hover{
+  background-color: #45a049;
+  border-color: #45a049;
+}
+.sugg:active{
+  background-color: #3e8e41;
+  border-color: #3e8e41;
+}
