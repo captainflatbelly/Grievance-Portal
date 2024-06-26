@@ -1,8 +1,31 @@
 <?php
-    session_start();
-    require_once '../config.php';
-    $trimmedMail =  $_SESSION['email'];
-    $id = $_SESSION['id'];
+session_start();
+require_once '../config.php';
+
+// Check if session variables are set
+if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+    echo "Session variables not set. Please login again.";
+    exit; // Stop further execution
+}
+
+$trimmedMail = $_SESSION['email'];
+$id = $_SESSION['id'];
+
+// Fetch complaints
+$sql = "SELECT complaints.*, staff.staffname 
+        FROM complaints 
+        JOIN staff ON complaints.staff = staff.staff_id
+        WHERE complaints.u_id = '$id' AND complaints.type = 'complaint' AND complaints.status = 'pending'
+        ORDER BY complaints.reg_time DESC";
+
+$result = mysqli_query($conn, $sql);
+
+if(!$result) {
+    echo "Error fetching complaints: " . mysqli_error($conn);
+    exit; // Stop further execution
+}
+
+$num = mysqli_num_rows($result);
 ?>
 
 <!DOCTYPE html>
@@ -30,38 +53,29 @@
                     <th>Priority</th>
                     <th>Description</th>
                     <th>Time of Registration</th>
-                    <th >Staff</th>
+                    <th>Staff</th>
                     <th>Status</th>
 		        </tr>
 	        </thead>
 	        <tbody>
-                <?php
-
-                    $sql = "SELECT complaints.*, staff.staffname 
-                    FROM complaints 
-                    JOIN staff ON complaints.staff = staff.staff_id
-                    WHERE complaints.u_id = '$id' AND complaints.type != 'suggestion'
-                    ORDER BY complaints.reg_time DESC";
-                    $result = mysqli_query($conn,$sql);
-                    $num = mysqli_num_rows($result);
-
-                    while($row = mysqli_fetch_array($result)){
-                ?>
-                        <tr>
-                            
-                        <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
-                        <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['status'] ?></td>
-                        </tr>
-                <?php	
-                    }
-                ?>
+            <?php
+                while($row = mysqli_fetch_array($result)){
+                    echo $row;
+            ?>
+                <tr>
+                    <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
+                    <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['status'] ?></td>
+                </tr>
+            <?php	
+                }
+            ?>
             </tbody>
 	    </table>
     </div>

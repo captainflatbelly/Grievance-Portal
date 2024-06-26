@@ -18,6 +18,8 @@ require_once '../config.php';
         <div class="nav">
             <p>Resolvio</p>
             <p1>Status History</p1>
+            <a href="/../staff/feedback.php?id=<?php echo $_GET['id']; ?>"><button class='alress'><?php echo $_GET['id']; ?></button></a>
+                      
             <a href="../destroy.php">
                 <button class="logb">Logout</button>
             </a>
@@ -33,6 +35,8 @@ require_once '../config.php';
                         
                         <th>Department</th>
                         <th>Time</th>
+                        <th>
+                        </th>  
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +70,7 @@ require_once '../config.php';
                         <td class="tab"><?php echo $title ?></td>
                         <td class="tab"><?php echo $row['feedback'] ?></td>
                         <td class="tab"><?php echo $row['staffname'] ?></td>
-                        <td class="tab"><?php echo $row['ftime'] ?></td>
+                        <td class="tab"><?php echo $row['ftime'] ?></td> 
                     </tr>
                     <?php } ?>
                 </tbody>
