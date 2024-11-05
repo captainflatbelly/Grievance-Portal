@@ -44,85 +44,41 @@ if(isset($_GET['id']) && !empty($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assign Staff</title>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-label {
-    margin-bottom: 10px;
-}
-
-select {
-    padding: 8px;
-    margin-bottom: 20px;
-    width: 100%;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-sizing: border-box;
-}
-
-input[type="submit"] {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-p {
-    margin-bottom: 10px;
-}
-
-    </style>
+    <link rel="stylesheet" href="staff.css">
 </head>
 <body>
-    <h2>Assign Staff to Complaint</h2>
-    <?php if(isset($row)) { ?>
+    
+    <div class="container">
+    <div class="nav">
+            <p>Resolvio</p>
+            <a href="../destroy.php" >
+                <button class="logb" >
+                    Logout
+                </button>
+            </a>
+        </div>
+        <div>
+    </div>
+    <div class="container2">
         
-    <p>Complaint ID: <?php echo $row['C_Id']; ?></p>
-    <p>Category: <?php echo $row['Category']; ?></p>
-    <p>Location: <?php echo $row['Location']; ?></p>
-    <p>Priority: <?php echo $row['Priority']; ?></p>
-    <p>Description: <?php echo $row['Description']; ?></p>
-    <?php } ?>
-    <form method="post">
-        <label for="staff">Select Staff:</label>
-        <select name="staff" id="staff">
-            <?php echo $options; ?>
-        </select>
-        <input type="submit" value="Assign Staff">
-    </form>
+            <h2 class="title">Assign Staff to Complaint</h2>
+            <?php if(isset($row)) { ?>
+            <div class="complaint-details">
+            <p class="detail"><strong>Complaint ID:</strong> <?php echo $row['C_Id']; ?></p>
+            <p class="detail"><strong>Category:</strong> <?php echo $row['Category']; ?></p>
+            <p class="detail"><strong>Location:</strong> <?php echo $row['Location']; ?></p>
+            <p class="detail"><strong>Priority:</strong> <?php echo $row['Priority']; ?></p>
+            <p class="detail"><strong>Description:</strong> <?php echo $row['Description']; ?></p>
+            </div>
+            <?php } ?>
+            <form method="post" class="form">
+            <label for="staff" class="label">Select Staff:</label>
+            <select name="staff" id="staff" class="select">
+                <?php echo $options; ?>
+            </select>
+            <input type="submit" value="Assign Staff" class="button">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

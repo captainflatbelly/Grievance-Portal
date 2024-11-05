@@ -21,15 +21,14 @@
            
             
             <div class="uactions">
-                <div class="item">
-                <a href="./complaints/viewSuggestions.php"><button class="actionb">View Suggestions</button></a>
-                    <a href="./complaints/addSuggestion.php"><button class="actionb">Add Suggestion</button></a>
-             
-                    <a href="./complaints/cform.php"><button class="actionb">Initialize Complaint</button></a>
-                    <a href="./complaints/pcom.php"><button class="actionb">Complaints</button></a>
-                    <a href="./complaints/rcom.php"><button class="actionb">Resolved Complaints</button></a>
-                    <a href="./complaints/pencom.php"><button class="actionb">Pending Complaints</button></a>
-                       </div>
+                <div class="dash-all">
+                <p ><a href="./complaints/viewSuggestions.php">View Suggestions</a></p>
+                <p><a href="./complaints/addSuggestion.php">Add Suggestion</a></p>
+                <p><a href="./complaints/cform.php">Initialize Complaint</a></p>
+                <p><a href="./complaints/pcom.php">Complaints</a></p>
+                <p><a href="./complaints/rcom.php">Resolved Complaints</a></p>
+                <p><a href="./complaints/pencom.php">Pending Complaints</a></p>
+                </div>
                 <img src="./img/complain.jpg" alt="">
             </div>
         </div>

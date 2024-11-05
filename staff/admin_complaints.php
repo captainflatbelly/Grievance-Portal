@@ -51,6 +51,7 @@
                         <th>Description</th>
                         <th>Time of Registration</th>
                         <th>Staff</th>
+                        <th>File</th>
                         <th colspan="2">Status</th> 
                     </tr>
                 </thead>
@@ -77,7 +78,14 @@
                         <td class="tab"><?php echo $row['Priority'] ?></td>
                         <td class="tab"><?php echo $row['Description'] ?></td>
                         <td class="tab"><?php echo $row['Reg_time'] ?></td>
-                        <td class="tab"><?php echo $row['staffname'] ?></td>
+                        <td scope="row" class="tab"><?php echo $row['staffname'] ? $row['staffname'] : 'Not Assigned' ?></td>
+                        <td scope="row" class="tab">
+                            <?php if ($row['image'] != 'No File' && !empty($row['image'])): ?>
+                                <a href="../images/<?php echo $row['image']; ?>" target="_blank"><button class='alress'>View File</button></a>
+                            <?php else: ?>
+                                No File
+                            <?php endif; ?>
+                        </td>
                         <td class="tab"><?php echo $row['status'] ?></td>
                         
                     </tr>

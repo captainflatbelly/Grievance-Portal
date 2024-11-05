@@ -2,6 +2,11 @@
     session_start();
     require_once '../config.php';
 
+    if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+        header("Location:../index.html");
+        echo "Session variables not set. Please login again.";
+        exit; // Stop further execution
+    }
    // $trimmedMail = str_replace(".com", "", $_SESSION['email']);
     $trimmedMail = $_SESSION['email'];
     $id = $_SESSION['id'];
@@ -18,8 +23,8 @@
 <body>
     <div class="container">
         <div class="nav">
-            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
-            <p1>Complaints</p1>
+            <p><a href="../dashboard.php" class="custom-link">Resolvio</a></p>
+            <p>Complaints</p>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
         <table class="com-table">
@@ -33,7 +38,7 @@
                     <th>Description</th>
                     <th>Time of Registration</th>
                     <th >Staff</th>
-                    <!-- <th colspan="2">Status</th> This one is for admins-->
+                    <th >File</th>
                     <th>Status</th>
 		        </tr>
 	        </thead>
@@ -42,7 +47,7 @@
 
                 $sql = "SELECT complaints.*, staff.staffname 
                 FROM complaints 
-                JOIN staff ON complaints.staff = staff.staff_id
+                LEFT JOIN staff ON complaints.staff = staff.staff_id
                 WHERE complaints.u_id = '$id' AND complaints.type != 'suggestion'
                 ORDER BY complaints.reg_time DESC";
                 $result = mysqli_query($conn,$sql);
@@ -59,7 +64,14 @@
                             <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
+                            <td scope="row" class="tab"><?php echo $row['staffname'] ? $row['staffname'] : 'Not Assigned' ?></td>
+                            <td scope="row" class="tab">
+                                <?php if ($row['image'] != 'No File' && !empty($row['image'])): ?>
+                                    <a href="../images/<?php echo $row['image']; ?>" target="_blank"><button class='alress'>View File</button></a>
+                                <?php else: ?>
+                                    No File
+                                <?php endif; ?>
+                            </td>
                             <td scope="row" class="tab"><?php echo $row['status'] ?></td>
                             <!-- <td class="tab"><a href="resolved.php?id=<?php //echo $row['C_Id'];?>"><button class='ress' >Resolve</button></a></td> This one is for admins -->
                         </tr>

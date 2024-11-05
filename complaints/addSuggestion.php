@@ -10,13 +10,23 @@
    
     $c_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
     $query = mysqli_query($conn,"INSERT into complaints (C_Id,u_id, title, Description, Reg_time, type) VALUES ('$c_id','$id', '$title','$desc',current_timestamp(), 'suggestion') ");
+   
+        {
+            $feed = "Your suggestion has been expunged to a complaint";
+            $selectedRows = mysqli_query($conn, "SELECT * FROM activity WHERE C_Id = '$c_id'");
+            $rows = mysqli_num_rows($selectedRows) + 1;
+            $activity_id = substr(md5(uniqid(mt_rand(), true)), 0, 10);
+            $feedback_from = "f74ff3ecbb";
 
+            $sql = "INSERT INTO activity (feedback, C_Id, activity_number, activity_id, feedback_from) VALUES ('$feed', '$c_id', '$rows', '$activity_id', '$feedback_from')";
+            mysqli_query($conn, $sql);
+        }
     header("Location:viewSuggestions.php");
   }
-  else
-  {
-    echo "<script>alert('ID not found') $id;</script>";
-  }
+  else if(!isset($_SESSION['id'])){
+    echo "<script>alert('ID not found')</script>";
+    header("Location:../index.html");
+}
   
 
 ?>
@@ -39,7 +49,7 @@
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"  method="post" enctype="multipart/form-data">
         <div>
-          <label for="title">Suggestion</label>
+          <label for="title" >Suggestion</label>
           <input type="text" id="title" name="title" >
         </div>
         

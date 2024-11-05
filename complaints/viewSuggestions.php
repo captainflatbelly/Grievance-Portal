@@ -1,6 +1,11 @@
 <?php
     session_start();
     require_once '../config.php';
+    if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+        header("Location:../index.html");
+        echo "Session variables not set. Please login again.";
+        exit; // Stop further execution
+    }
     $trimmedMail =  $_SESSION['email'];
     $id = $_SESSION['id'];
 ?>
@@ -15,13 +20,13 @@
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
-            <p1>Suggestions</p1>
+        <div class="nav flex">
+            <p><a href="../dashboard.php" class="custom-link">Resolvio</a></p>
+            <p>Suggestions</p>
+             <a href="viewMySuggestions.php"><button class="logb">My Suggestions</button></a>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
-        <div style="width: 100%; margin-top: 10px; margin-bottom: 10px; display: flex; justify-content: flex-end; align-items: center">
-        <a href="viewMySuggestions.php"><button class="sugg">My Suggestions</button></a></div>
+        
         <table class="com-table">
             <thead>
                 <tr>
@@ -52,7 +57,6 @@
                         echo "<td>{$row['upvotes']}</td>";
                         echo "<td>";
                         if (!$alreadyUpvoted) {
-                            // Display upvote button if the user hasn't upvoted
                             echo "<a href='upvote.php?id={$row['C_Id']}'><button>Upvote</button></a>";
                         } else {
                             echo "Already Upvoted";

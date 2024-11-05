@@ -1,13 +1,7 @@
 <?php 
     session_start();
     require_once '../config.php';
-    $em = $_SESSION['id'];
-    $result = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' ");
-    $num = mysqli_num_rows($result);
-    $result1 = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' AND status='Resolved' ");
-    $num1 = mysqli_num_rows($result1);
-    $result2 = mysqli_query($conn,"SELECT * FROM complaints where staff= '$em' AND status='Pending' ");
-    $num2 = mysqli_num_rows($result2);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +30,7 @@
             <div class="dash-all">
                 <p><a href="admin_complaints.php">View Complaints</a></p>
                 <p><a href="create_authority.php">Create Authority Account</a></p>
-                </div>
+            </div>
         </div>
     </div>
 </body>

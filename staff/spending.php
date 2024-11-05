@@ -9,14 +9,14 @@
 <body>
 <div class="container">
         <div class="nav">
-            <p><a href="staff.php" class="hlink">Resolvio</a></p>
-            <p1>Pending Complaints</p1>
+            <p><a href="staff.php" class="custom-link">Resolvio</a></p>
+            <p>Pending Complaints</p>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
         </div>
         <table class="com-table">
 	        <thead>
 		        <tr>
-                    <th>Complaint ID</th>
+                    <th>Status Form</th>
                     <th>Mobile No.</th>
                     <th>Category</th>
                     <th>Location</th>
@@ -47,7 +47,7 @@
                 ?>
                         <tr>
                             
-                        <td class="tab"><a href="feedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'><?php echo $row['C_Id']; ?></button></a></td>
+                        <td class="tab"><a href="feedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>Add Feedback</button></a></td>
                           <td scope="row" class="tab"><?php echo $row['Mob'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Category'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Location'] ?></td>
@@ -55,9 +55,9 @@
                             <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
                             <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
-                            <td scope="row" class="tab"><?php echo $row['status'] ?></td>
+                            <td scope="row" class="tab"><?php echo $row['status'] ?>
                             <?php if ($row['status'] != "resolved") { ?>
-                                <td class="tab"><a href="resolved.php?id=<?php echo $row['C_Id']; ?>"><button class='ress'>Resolve</button></a></td>
+                                <a href="resolved.php?id=<?php echo $row['C_Id']; ?>"><button class='ress'>Resolve</button></a></td>
                             <?php } ?>
                         </tr>
                 <?php	

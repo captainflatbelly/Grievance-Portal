@@ -6,7 +6,11 @@ require_once '../config.php';
 $id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 //$id_get = isset($_GET['id']) ? $_GET['id'] : null;
 
-
+if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+  header("Location:../index.html");
+  echo "Session variables not set. Please login again.";
+  exit; // Stop further execution
+}
 
 // if(!$id || !$id_get) {
 //     echo "<script>alert('ID not found');</script>";

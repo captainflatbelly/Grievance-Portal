@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+    header("Location:../index.html");
+    echo "Session variables not set. Please login again.";
+    exit; // Stop further execution
+}
 require_once '../config.php';
 ?>
 
@@ -17,9 +22,7 @@ require_once '../config.php';
     <div class="container">
         <div class="nav">
             <p>Resolvio</p>
-            <p1>Status History</p1>
-            <a href="/../staff/feedback.php?id=<?php echo $_GET['id']; ?>"><button class='alress'><?php echo $_GET['id']; ?></button></a>
-                      
+            <p>Status History</p>
             <a href="../destroy.php">
                 <button class="logb">Logout</button>
             </a>
@@ -35,8 +38,7 @@ require_once '../config.php';
                         
                         <th>Department</th>
                         <th>Time</th>
-                        <th>
-                        </th>  
+                         
                     </tr>
                 </thead>
                 <tbody>

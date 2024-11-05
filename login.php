@@ -43,38 +43,46 @@
     elseif(isset($_POST['Lemail'] )){
         $lem = $_POST['Lemail'];
         $lpass = $_POST['Lpassword'];
-        $usermode = isset($_POST['Luser_type']) ? $_POST['Luser_type'] : 'nai aaya'; // Check if Suser_type is set
+        $usermode = isset($_POST['Luser_type']) ? $_POST['Luser_type'] : 'nai aaya';
+        echo $usermode;
+        // Check if Suser_type is set
         if($lem == 'admin@db' && $lpass == '1234') {
+            session_destroy(); 
+            session_start();
             $_SESSION['email']=$lem;
             $_SESSION['id']='adminID';
             $_SESSION['name']='Admin';
             header('location:/staff/admin.php');
             return;
         }
-        $query = "SELECT email, upassword FROM users WHERE email = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("s", $lem);
-        $stmt->execute();
-        $stmt->bind_result($dbemail, $dbpassword);
-        $stmt->fetch();
-        $stmt->close();
-        $query3 = "SELECT u_id FROM users WHERE email = ?";
-            $stmt = $conn->prepare($query3);
+        elseif($usermode == 'user')
+        {
+            $query = "SELECT email, upassword FROM users WHERE email = ?";
+            $stmt = $conn->prepare($query);
             $stmt->bind_param("s", $lem);
             $stmt->execute();
-            $stmt->bind_result($userId);
-            if ($stmt->fetch()) {
-                $_SESSION['id'] = $userId;
-            } else {
-                $resultUserId = null;
-            }
+            $stmt->bind_result($dbemail, $dbpassword);
+            $stmt->fetch();
             $stmt->close();
-        if($dbemail == $lem && $dbpassword == $lpass ){
-            session_start();
-            $_SESSION['id']=$userId;
-            $_SESSION['email']=$lem;
-
-            header ('location:dashboard.php');
+            $query3 = "SELECT u_id FROM users WHERE email = ?";
+                $stmt = $conn->prepare($query3);
+                $stmt->bind_param("s", $lem);
+                $stmt->execute();
+                $stmt->bind_result($userId);
+                if ($stmt->fetch()) {
+                    $_SESSION['id'] = $userId;
+                } else {
+                    $resultUserId = null;
+                }
+                $stmt->close();
+            if($dbemail == $lem && $dbpassword == $lpass ){
+                session_destroy(); 
+                session_start();
+                $_SESSION['id']=$userId;
+                $_SESSION['email']=$lem;
+    
+                header ('location:dashboard.php');
+            }
         }
 
         elseif($usermode == 'staff'){

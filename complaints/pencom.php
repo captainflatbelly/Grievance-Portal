@@ -4,6 +4,7 @@ require_once '../config.php';
 
 // Check if session variables are set
 if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+    header("Location:../index.html");
     echo "Session variables not set. Please login again.";
     exit; // Stop further execution
 }
@@ -14,7 +15,7 @@ $id = $_SESSION['id'];
 // Fetch complaints
 $sql = "SELECT complaints.*, staff.staffname 
         FROM complaints 
-        JOIN staff ON complaints.staff = staff.staff_id
+        LEFT JOIN staff ON complaints.staff = staff.staff_id
         WHERE complaints.u_id = '$id' AND complaints.type = 'complaint' AND complaints.status = 'pending'
         ORDER BY complaints.reg_time DESC";
 
@@ -38,10 +39,10 @@ $num = mysqli_num_rows($result);
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
-            <p1>Pending Complaints</p1>
-            <a href="../destroy.php" ><button class="logb" >Logout</button></a>
+        <div class="nav flex">
+            <p><a href="../dashboard.php" class="custom-link">Resolvio</a></p>
+            <p>Pending Complaints</p>
+            <a href="../destroy.php"><button class="logb">Logout</button></a>
         </div>
         <table class="com-table">
 	        <thead>
@@ -54,13 +55,13 @@ $num = mysqli_num_rows($result);
                     <th>Description</th>
                     <th>Time of Registration</th>
                     <th>Staff</th>
+                    <th>File</th>
                     <th>Status</th>
 		        </tr>
 	        </thead>
 	        <tbody>
             <?php
                 while($row = mysqli_fetch_array($result)){
-                    echo $row;
             ?>
                 <tr>
                     <td class="tab"><a href="viewFeedback.php?id=<?php echo $row['C_Id']; ?>"><button class='alress'>View Status History</button></a></td>
@@ -70,10 +71,17 @@ $num = mysqli_num_rows($result);
                     <td scope="row" class="tab"><?php echo $row['Priority'] ?></td>
                     <td scope="row" class="tab"><?php echo $row['Description'] ?></td>
                     <td scope="row" class="tab"><?php echo $row['Reg_time'] ?></td>
-                    <td scope="row" class="tab"><?php echo $row['staffname'] ?></td>
+                    <td scope="row" class="tab"><?php echo $row['staffname'] ? $row['staffname'] : 'Not Assigned' ?></td>
+                    <td scope="row" class="tab">
+                        <?php if ($row['image'] != 'No File' && !empty($row['image'])): ?>
+                            <a href="../images/<?php echo $row['image']; ?>" target="_blank"><button class='alress'>View File</button></a>
+                        <?php else: ?>
+                            No File
+                        <?php endif; ?>
+                    </td>
                     <td scope="row" class="tab"><?php echo $row['status'] ?></td>
                 </tr>
-            <?php	
+            <?php    
                 }
             ?>
             </tbody>

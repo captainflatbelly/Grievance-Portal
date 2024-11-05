@@ -1,6 +1,11 @@
 <?php
     session_start();
     require_once '../config.php';
+    if(!isset($_SESSION['email']) || !isset($_SESSION['id'])) {
+        header("Location:../index.html");
+        echo "Session variables not set. Please login again.";
+        exit; // Stop further execution
+    }
     $trimmedMail =  $_SESSION['email'];
     $id = $_SESSION['id'];
 ?>
@@ -11,13 +16,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="staff.css" />
-    <title>Suggestions</title>
+    <title>My Suggestions</title>
 </head>
 <body>
     <div class="container">
-        <div class="nav">
-            <p><a href="../dashboard.php" class="hlink">Resolvio</a></p>
-            <p1>Suggestions</p1>
+        <div class="nav flex">
+            <p><a href="../dashboard.php" class="custom-link">Resolvio</a></p>
+            <p>My Suggestions</p>
             <a href="../destroy.php" ><button class="logb" >Logout</button></a>
             
     </a>
@@ -28,8 +33,8 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Posted by</th>
-                    <th >Upvotes</th>
-                    <th >Action</th>
+                    <th>Upvotes</th>
+                    <th>Action</th>
 		        </tr>
 	        </thead>
 	        <tbody>

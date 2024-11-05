@@ -8,7 +8,11 @@ module.exports = {
     "./staff/**/*.php"
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        custom: ['"Trebuchet MS"', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

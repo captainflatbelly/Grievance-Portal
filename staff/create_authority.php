@@ -6,38 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resolvio</title>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="staff.css" />
+    
 </head>
 
 <body>
     <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="sign-up-form">
-                    <h2 class="title">Registering Municipal Authority</h2>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Authority Name</label>
-                        <input type="text" class="form-control" name="authority_name" id="authority_name" aria-describedby="emailHelp" placeholder="Enter name" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" name="authority_email" id="authority_email" aria-describedby="emailHelp" placeholder="Enter email" required />
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" name="authority_password" id="authority_password" placeholder="Password">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+        <div class="nav">
+                <p>Resolvio</p>
+                <a href="../destroy.php" >
+                    <button class="logb" >
+                        Logout
+                    </button>
+                </a>
             </div>
+            <div>
+    </div>
+    <div class="container2">
+        <div class="forms-container">
+        <div class="signin-signup">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="sign-up-form form">
+            <h2 class="title">Registering Municipal Authority</h2>
+            <div class="form-group">
+                <label for="authority_name" class="label">Authority Name</label>
+                <input type="text" class="form-control input" name="authority_name" id="authority_name" placeholder="Enter name" required />
+            </div>
+            <div class="form-group">
+                <label for="authority_email" class="label">Email address</label>
+                <input type="email" class="form-control input" name="authority_email" id="authority_email" placeholder="Enter email" required />
+            </div>
+            <div class="form-group">
+                <label for="authority_password" class="label">Password</label>
+                <input type="password" class="form-control input" name="authority_password" id="authority_password" placeholder="Password" required />
+            </div>
+            <button type="submit" class="btn btn-primary button">Submit</button>
+            </form>
+        </div>
         </div>
 
         <div class="panels-container">
-            <!-- Panel content -->
+        <!-- Panel content -->
         </div>
     </div>
 
