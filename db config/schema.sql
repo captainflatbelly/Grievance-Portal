@@ -4,7 +4,7 @@ CREATE TABLE `users` (
   `upassword` varchar(255) NOT NULL,
   `joining_date` date NOT NULL,
   `u_id` varchar(10) NOT NULL,
-  PRIMARY KEY (`u_id`)
+  PRIMARY KEY (`u_id`),
 );
 
 CREATE TABLE `staff` (
@@ -57,3 +57,4 @@ CREATE TABLE `activity` (
   CONSTRAINT `activity_ibfk_1` FOREIGN KEY (`C_Id`) REFERENCES `complaints` (`C_Id`),
   CONSTRAINT `fk_feedback_from` FOREIGN KEY (`feedback_from`) REFERENCES `staff` (`staff_id`)
 );
+
